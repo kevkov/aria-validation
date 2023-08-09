@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<!-- Add your site or application content here -->
+<p>Hello world! This is HTML5 Boilerplate.</p>
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+  window.ga = function () {
+    ga.q.push(arguments)
+  };
+  ga.q = [];
+  ga.l = +new Date;
+  ga('create', 'UA-XXXXX-Y', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('set', 'transport', 'beacon');
+  ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
+<style>
+  .sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
+<script>
+  const handleChange = (e) => {
+    function createErrorMessage(message) {
+      const p = document.createElement('p');
+      p.innerText = message;
+      p.className = 'sr-only';
+      return p;
+    }
+
+    const validationBlock = document.getElementById('validationMessages');
+    validationBlock.innerHTML = '';
+
+    const inputValue = e.target.value;
+
+    if (inputValue.length !== 6) {
+      validationBlock.appendChild(createErrorMessage('Value is wrong length'));
+    }
+
+    if (RegExp(/(\d)\1{2,}/).test(inputValue)) {
+      validationBlock.appendChild(createErrorMessage('Value has 3 numbers in a row'));
+    }
+
+    if (RegExp(/(012|123|234|345|456|567|678|789|0123|1234|2345|3456|4567|5678|6789|7890|01234|12345|23456|34567|45678|56789|67890|0123456|123456|234567|345678|456789|567890|098765|987654|876543|765432|654321|6543210|09876|98765|87654|76543|65432|54321|43210|0987|9876|8765|7654|6543|5432|4321|3210|987|876|765|654|543|432|321|210)+/).test(inputValue)) {
+      validationBlock.appendChild(createErrorMessage('Value has 3 consecutive numbers'));
+    }
+
+    if (validationBlock.childNodes.length === 0) {
+      validationBlock.appendChild(createErrorMessage('Value is acceptable'));
+    }
+
+    // demo.innerText = '';
+    // const value = e.target.value;
+    // if (value.length > 5) {
+    //   demo.ariaLive = 'assertive';
+    //   demo.ariaInvalid = 'true';
+    //   // demo.role = 'alert';
+    //   demo.innerText = 'Value is too long';
+    // } else {
+    //   // demo.ariaLive = 'off';
+    //   demo.ariaInvalid = 'false';
+    //   demo.innerText = 'Value is acceptable';
+    // }
+  }
+</script>
+
+</body>
+
+<input id="passcode" type="text" oninput="handleChange(event)" aria-describedby="validationMessages"/>
+<div id="validationMessages">
+  <p class="sr-only">Value is too long</p>.
+</div>
+</html>
